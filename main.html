@@ -116,6 +116,7 @@
             e.stopPropagation();
             if(mainView.activePage.name!='index'){              
               mainView.router.back();
+              myPhotoBrowser.close();
             } else {
               if(new Date().getTime() - lastTimeBackPress < durationToExit){
                   navigator.app.exitApp();
