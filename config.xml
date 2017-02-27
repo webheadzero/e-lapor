@@ -36,8 +36,4 @@
         <splash src="www/res/screen/screen-hdpi-portrait.png" density="port-hdpi"/>
         <splash src="www/res/screen/screen-xhdpi-portrait.png" density="port-xhdpi"/>
     </platform>
-    <!-- for Android -->
-    <feature name="Toast">
-      <param name="android-package" value="nl.xservices.plugins.Toast" />
-    </feature>
 </widget>
