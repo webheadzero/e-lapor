@@ -13,9 +13,9 @@
     <preference name="StatusBarBackgroundColor" value="#3F9B41" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-nativeclicksound" spec="https://github.com/MatiMenich/cordova-plugin-nativeClickSound.git" source="git"/>
-    <plugin name="cordova-plugin-x-toast" spec="https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git" source="git"/>
+    <gap:plugin name="cordova-plugin-x-toast" source="npm" />
     <plugin name="cordova-plugin-openfilenative" spec="https://github.com/antonioJASR/FileOpener.git" source="git"/>
-    <plugin name="cordova-plugin-splashscreen" spec="https://github.com/apache/cordova-plugin-splashscreen.git" source="git"/>
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -36,4 +36,8 @@
         <splash src="www/res/screen/screen-hdpi-portrait.png" density="port-hdpi"/>
         <splash src="www/res/screen/screen-xhdpi-portrait.png" density="port-xhdpi"/>
     </platform>
+    <!-- for Android -->
+    <feature name="Toast">
+      <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
 </widget>
