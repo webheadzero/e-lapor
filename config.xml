@@ -10,11 +10,12 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="orientation" value="portrait" />
-    <preference name="StatusBarBackgroundColor" value="#4CAF50" />
+    <preference name="StatusBarBackgroundColor" value="#3F9B41" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-nativeclicksound" spec="https://github.com/MatiMenich/cordova-plugin-nativeClickSound.git" source="git"/>
     <plugin name="cordova-plugin-x-toast" spec="https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git" source="git"/>
     <plugin name="cordova-plugin-openfilenative" spec="https://github.com/antonioJASR/FileOpener.git" source="git"/>
+    <plugin name="cordova-plugin-splashscreen" spec="https://github.com/apache/cordova-plugin-splashscreen.git" source="git"/>
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
