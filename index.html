@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#4CAF50">
+    <!-- Your app title -->
+    <title>E-Lapor Bantul</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="css/material-icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body class="theme-green login-page">
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <div class="pages">
+          <div data-page="login" class="page">
+            <div class="section section-hero" style="background-image:url(img/login-bg.png);padding:30px;">
+              <div class="content-block text-center">
+                <h1>E-LAPOR BANTUL</h1>
+                <p>
+                  Silahkan login atau daftar untuk dapat masuk ke dalam sistem
+                </p>
+              </div>
+            </div>
+            <form class="list-block inputs-list login-form noborder" method="POST" action="main.html">
+              <ul>
+                <li>
+                  <div class="item-content">
+                    <div class="item-media"><i class="icon f7-icons">person</i></div>
+                    <div class="item-inner">
+                      <div class="item-title floating-label">Username</div>
+                      <div class="item-input item-input-field">
+                        <input type="text" placeholder="" class="">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content">
+                    <div class="item-media"><i class="icon f7-icons">lock</i></div>
+                    <div class="item-inner">
+                      <div class="item-title floating-label">Password</div>
+                      <div class="item-input item-input-field">
+                        <input type="text" placeholder="" class="">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="content-block">
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-100"><button type="submit" class="button button-big button-fill color-green external">MASUK</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-100"><a href="registrasi.html" class="button button-big">DAFTAR</a></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+
+     <!-- Cordova Required -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/Toast.js"></script>
+    <script type="text/javascript" src="js/painlessfs.js"></script>
+    <script type="text/javascript">
+        $$(document).on('click','a,button',function(){
+            nativeclick.trigger();
+        });
+        document.addEventListener("deviceready",function(){
+            if (cordova.platformId == 'android') {
+                StatusBar.backgroundColorByHexString("#4CAF50");
+            }
+            document.addEventListener("backbutton", onBackKeyDown, false);
+        },false);
+
+
+        var lastTimeBackPress=0;
+        var durationToExit=2000;
+
+        function onBackKeyDown(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if(mainView.activePage.name!= null){              
+              mainView.router.back();
+            } else {
+              if(new Date().getTime() - lastTimeBackPress < durationToExit){
+                  navigator.app.exitApp();
+              } else{
+                  window.plugins.toast.showWithOptions(
+                      {
+                        message: "Tekan sekali lagi untuk keluar.",
+                        duration: "short",
+                        position: "bottom",
+                        addPixelsY: -40
+                      }
+                    );
+                  lastTimeBackPress=new Date().getTime();
+              }
+            }
+        }
+    </script>
+  </body>
+</html> 

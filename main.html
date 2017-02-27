@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#4CAF50">
+    <!-- Your app title -->
+    <title>E-Lapor Bantul</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="css/material-icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body class="theme-green">
+    <!-- Views -->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-fixed toolbar-fixed">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+ 
+            <!-- Top Navbar. In Material theme it should be inside of the page-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="center logo">E-Lapor</div>
+                </div>
+            </div>   
+            <a href="form-laporan.html" class="floating-button color-blue add-laporan">
+              <i class="icon icon-plus"></i>
+            </a>
+            <div class="toolbar tabbar main-toolbar">
+              <div class="toolbar-inner">
+                <a href="#tab-home" class="tab-link active">
+                  <i class="icon f7-icons inactive">home</i>
+                  <i class="icon f7-icons active">home_fill</i>
+                </a>
+                <a href="#tab-keluhan" class="tab-link">
+                  <i class="icon f7-icons inactive">list</i>
+                  <i class="icon f7-icons active">list_fill</i>
+                </a>
+                <a href="#tab-notification" class="tab-link">
+                  <i class="icon f7-icons inactive">bell</i>
+                  <i class="icon f7-icons active">bell_fill</i>
+                </a>
+                <a href="#tab-more" class="tab-link">
+                  <i class="icon f7-icons">bars</i>
+                </a>
+              </div>
+            </div>
+            <div class="tabs-swipeable-wrap tabs-container">
+              <div class="tabs main-tabs">
+                <div id="tab-home" class="tab active" data-url="home.html" data-title="E-Lapor" style="background:#ddd;">
+                  <div class="pull-to-refresh-content" data-ptr-distance="55">
+                    <div class="pull-to-refresh-layer">
+                      <div class="preloader"></div>
+                      <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                  </div>
+                </div>
+                <div id="tab-keluhan" class="tab scroll" data-url="category.html" data-title="Daftar Keluhan" style="background:#fff;">
+                  <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                </div>
+                <div id="tab-notification" class="tab" data-url="notification.html" data-title="Notifikasi" style="background:#fff;">
+                  <div class="pull-to-refresh-content" data-ptr-distance="55">
+                    <div class="pull-to-refresh-layer">
+                      <div class="preloader"></div>
+                      <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                  </div>
+                </div>
+                <div id="tab-more" class="tab scroll" data-url="more.html" data-title="Setting" style="background:#fff;">
+                  <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+
+     <!-- Cordova Required -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/Toast.js"></script>
+    <script type="text/javascript" src="js/painlessfs.js"></script>
+    <script type="text/javascript">
+        $$(document).on('click','a,button',function(){
+            nativeclick.trigger();
+        });
+        document.addEventListener("deviceready",function(){
+            if (cordova.platformId == 'android') {
+                StatusBar.backgroundColorByHexString("#4CAF50");
+            }
+            document.addEventListener("backbutton", onBackKeyDown, false);
+        },false);
+
+
+        var lastTimeBackPress=0;
+        var durationToExit=2000;
+
+        function onBackKeyDown(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if(mainView.activePage.name!= null){              
+              mainView.router.back();
+            } else {
+              if(new Date().getTime() - lastTimeBackPress < durationToExit){
+                  navigator.app.exitApp();
+              } else{
+                  window.plugins.toast.showWithOptions(
+                      {
+                        message: "Tekan sekali lagi untuk keluar.",
+                        duration: "short",
+                        position: "bottom",
+                        addPixelsY: -40
+                      }
+                    );
+                  lastTimeBackPress=new Date().getTime();
+              }
+            }
+        }
+    </script>
+  </body>
+</html> 
