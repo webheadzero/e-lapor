@@ -64,11 +64,11 @@
                       <div class="preloader"></div>
                       <div class="pull-to-refresh-arrow"></div>
                     </div>
-                    <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                    <div class="content"></div>
                   </div>
                 </div>
                 <div id="tab-keluhan" class="tab scroll" data-url="category.html" data-title="Daftar Keluhan" style="background:#fff;">
-                  <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                  <div class="content"></div>
                 </div>
                 <div id="tab-notification" class="tab" data-url="notification.html" data-title="Notifikasi" style="background:#fff;">
                   <div class="pull-to-refresh-content" data-ptr-distance="55">
@@ -76,11 +76,11 @@
                       <div class="preloader"></div>
                       <div class="pull-to-refresh-arrow"></div>
                     </div>
-                    <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                    <div class="content"></div>
                   </div>
                 </div>
                 <div id="tab-more" class="tab scroll" data-url="more.html" data-title="Setting" style="background:#fff;">
-                  <div class="content"><span class="progressbar-infinite color-multi"></span></div>
+                  <div class="content"></div>
                 </div>
               </div>
             </div>
@@ -114,7 +114,10 @@
         function onBackKeyDown(e){
             e.preventDefault();
             e.stopPropagation();
-            if(new Date().getTime() - lastTimeBackPress < durationToExit){
+            if(mainView.activePage.name!='index'){              
+              mainView.router.back();
+            } else {
+              if(new Date().getTime() - lastTimeBackPress < durationToExit){
                   navigator.app.exitApp();
               } else{
                   window.plugins.toast.showWithOptions(
@@ -127,6 +130,7 @@
                     );
                   lastTimeBackPress=new Date().getTime();
               }
+            }
         }
     </script>
   </body>

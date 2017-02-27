@@ -26,10 +26,7 @@
           <div data-page="login" class="page">
             <div class="section section-hero" style="background-image:url(img/login-bg.png);padding:30px;">
               <div class="content-block text-center">
-                <h1>E-LAPOR BANTUL</h1>
-                <p>
-                  Silahkan login atau daftar untuk dapat masuk ke dalam sistem
-                </p>
+                <img src="img/logo.png" alt="" width="100px">
               </div>
             </div>
             <form class="list-block inputs-list login-form noborder" method="POST" action="main.html">
@@ -96,7 +93,10 @@
         function onBackKeyDown(e){
             e.preventDefault();
             e.stopPropagation();
-            if(new Date().getTime() - lastTimeBackPress < durationToExit){
+            if(mainView.activePage.name!='login'){             
+              mainView.router.back();
+            } else {
+              if(new Date().getTime() - lastTimeBackPress < durationToExit){
                   navigator.app.exitApp();
               } else{
                   window.plugins.toast.showWithOptions(
@@ -109,6 +109,7 @@
                     );
                   lastTimeBackPress=new Date().getTime();
               }
+            }
         }
     </script>
   </body>

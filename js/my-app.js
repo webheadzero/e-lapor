@@ -1,7 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-    material: true,
-    template7Pages: true
+    material: true
 });
 
 // Export selectors engine
@@ -48,6 +47,7 @@ myApp.onPageInit('about', function (page) {
         createContentPage();
     });
 });*/
+
 
 
 $$(document).on('DOMContentLoaded', function(){
