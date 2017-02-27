@@ -114,10 +114,7 @@
         function onBackKeyDown(e){
             e.preventDefault();
             e.stopPropagation();
-            if(mainView.activePage.name!= null){              
-              mainView.router.back();
-            } else {
-              if(new Date().getTime() - lastTimeBackPress < durationToExit){
+            if(new Date().getTime() - lastTimeBackPress < durationToExit){
                   navigator.app.exitApp();
               } else{
                   window.plugins.toast.showWithOptions(
@@ -130,7 +127,6 @@
                     );
                   lastTimeBackPress=new Date().getTime();
               }
-            }
         }
     </script>
   </body>
