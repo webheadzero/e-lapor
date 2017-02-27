@@ -15,7 +15,6 @@
     <plugin name="cordova-plugin-nativeclicksound" spec="https://github.com/MatiMenich/cordova-plugin-nativeClickSound.git" source="git"/>
     <plugin name="cordova-plugin-x-toast" spec="https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git" source="git"/>
     <plugin name="cordova-plugin-openfilenative" spec="https://github.com/antonioJASR/FileOpener.git" source="git"/>
-    <plugin name="br.com.paveisitemas.splashscreen" spec="2.1.1" source="pgb" />
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
