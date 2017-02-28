@@ -83,6 +83,21 @@ $$(document).on('DOMContentLoaded', function(){
         myPhotoBrowserDark.open();
     });
 
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType=navigator.camera.DestinationType;
+
+    function capturePhoto() {
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    function getPhoto() {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: pictureSource.PHOTOLIBRARY});
+    }
+
     /*$$(document).on('click','.category-item', function () {
         var url = $$(this).attr('href');
         var cat = $$(this).find('h5').text();
