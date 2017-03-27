@@ -9,15 +9,10 @@
 		</div>
 	    <!-- Scrollable page content-->
 	    <div class="page-content">
-	    	<div class="image-placeholder">
-	    		<i class="f7-icons">camera</i>
+	    	<div class="image-placeholder" id="form-image-placeholder">
+	    		<i class="f7-icons" id="image-placeholder-icon">camera</i>
+	    		<img style="display:none;width: 100%;height: auto" id="image-placeholder" src="" />
 	    	</div>
-	    	<div class="content-block">
-		    	<div class="row" style="margin-bottom: 10px;">
-		            <div class="col-50"><button type="button" class="button button-big button-fill color-blue" onclick="capturePhoto();">Camera</button></div>
-		            <div class="col-50"><button type="button" class="button button-big button-fill color-red" onclick="getPhoto();">Gallery</button></div>
-		         </div>
-	        </div>
 	    	<div class="content-block-title">Masukkan Informasi Laporan</div>
 	    	<form class="list-block inputs-list">
 				<ul>

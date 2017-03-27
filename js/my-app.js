@@ -6,19 +6,6 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 
-$$.get('home.html', function (data) {
-  $$('.main-tabs #tab-home .content').html(data);
-});
-
-/*$$('.main-toolbar .tab-link').on('click',function(){
-    var target = $$(this).attr('href');
-    var url = $$(target).data('url');
-
-    $$.get(url, function (data) {
-      $$(target).html(data);
-    });
-});*/
-
 var ptrContent = $$('.pull-to-refresh-content');
 
 ptrContent.on('ptr:refresh', function (e) {
@@ -51,6 +38,9 @@ myApp.onPageInit('about', function (page) {
 
 
 $$(document).on('DOMContentLoaded', function(){
+    $$.get('pages/home.html', function (data) {
+      $$('.main-tabs #tab-home .content').html(data);
+    });
     if($$('#tab-home').hasClass('active')){
         $$('.add-laporan').addClass('in');
     } else {
@@ -83,19 +73,46 @@ $$(document).on('DOMContentLoaded', function(){
         myPhotoBrowserDark.open();
     });
 
-    pictureSource=navigator.camera.PictureSourceType;
-    destinationType=navigator.camera.DestinationType;
-
-    function capturePhoto() {
+    $$(document).on('click','#form-image-placeholder',function(){
+        var buttons = [
+            {
+                text: 'Ambil Gambar',
+                onClick : function(){
+                    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+                    destinationType: destinationType.DATA_URL,correctOrientation: true });
+                }
+            },
+            {
+                text: 'Buka Galeri',
+                onClick : function(){
+                    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+                    destinationType: destinationType.DATA_URL,correctOrientation: true,
+                    sourceType: pictureSource.PHOTOLIBRARY });
+                }
+            },
+        ];
+        myApp.actions(buttons);
+    });
+    $$(document).on('click','.btn-capture-photo',function(){
         navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+        destinationType: destinationType.DATA_URL,correctOrientation: true });
+    });
+    $$(document).on('click','.btn-get-gallery',function(){
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL,correctOrientation: true,
+        sourceType: pictureSource.PHOTOLIBRARY });
+    });
+    function onPhotoDataSuccess(imageData) {
+      var imgPlaceholder = document.getElementById('image-placeholder');
+      var imgPlaceholderIcon = document.getElementById('image-placeholder-icon');
+      
+      imgPlaceholderIcon.style.display = 'none';
+      imgPlaceholder.style.display = 'block';
+      imgPlaceholder.src = "data:image/jpeg;base64," + imageData;
     }
 
-    function getPhoto() {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,
-        sourceType: pictureSource.PHOTOLIBRARY});
+    function onFail(message) {
+      console.log('Failed because: ' + message);
     }
 
     /*$$(document).on('click','.category-item', function () {

@@ -24,12 +24,12 @@
       <div class="view view-main">
         <div class="pages">
           <div data-page="login" class="page">
-            <div class="section section-hero" style="background-image:url(img/login-bg.png);padding:30px;">
+            <div class="section section-hero" style="background-image:url(img/login-bg.jpg);padding:30px;">
               <div class="content-block text-center">
                 <img src="img/logo.png" alt="" width="100px">
               </div>
             </div>
-            <form class="list-block inputs-list login-form noborder" method="POST" action="main.html">
+            <form class="list-block inputs-list login-form noborder" method="GET" action="main.html">
               <ul>
                 <li>
                   <div class="item-content">
@@ -72,7 +72,7 @@
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
 
-     <!-- Cordova Required -->
+     <!-- Cordova Required
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/Toast.js"></script>
     <script type="text/javascript">
@@ -81,7 +81,8 @@
         });
         document.addEventListener("deviceready",function(){
             if (cordova.platformId == 'android') {
-                StatusBar.backgroundColorByHexString("#3F9B41");
+                StatusBar.backgroundColorByHexString("#E1F4FE");
+                StatusBar.hide();
             }
             document.addEventListener("backbutton", onBackKeyDown, false);
         },false);
@@ -113,5 +114,6 @@
             }
         }
     </script>
+     -->
   </body>
 </html> 
