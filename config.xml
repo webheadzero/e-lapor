@@ -36,6 +36,13 @@
         <splash src="www/res/screen/screen-hdpi-portrait.png" density="port-hdpi"/>
         <splash src="www/res/screen/screen-xhdpi-portrait.png" density="port-xhdpi"/>
     </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
     <!-- for Android -->
     <feature name="Toast">
       <param name="android-package" value="nl.xservices.plugins.Toast" />
